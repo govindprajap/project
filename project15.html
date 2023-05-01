@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style15.css">
+    <title>Generate a Random Password</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a <br> <Span>Random Password</Span></h1>
+        <div class="display">
+            <input type="text" id="Password" placeholder="Password">
+            <i class="fa-regular fa-copy" onclick="copyPassword()"></i>
+        </div>
+        <button onclick="createPassword()">Generate Password</button>
+    </div>
+    
+</body>
+<script>
+    const Password = document.getElementById("Password");
+    const length = 12;
+    const upperCase = "ABCDEFGHIJKLMOPQRSTUVWXYZ";
+    const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+    const number = "0123456789";
+    const symbol = "@#$%^&*()[]}{";
+    const alChars = upperCase + lowerCase + number + symbol;
+    function createPassword(){
+        let password = "";
+        password += upperCase[Math.floor(Math.random() * upperCase.length)];
+        password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+        password += number[Math.floor(Math.random() * number.length)];
+        password += symbol[Math.floor(Math.random() * symbol.length)];
+        while(length > password.length){
+            password += alChars[Math.floor(Math.random() * alChars.length)];
+
+        }
+    const Password = document.getElementById("Password");
+    Password.value = password;
+
+
+    }
+    function copyPassword(){
+        Password.select();
+        document.execCommand("copy");
+    }
+    
+</script>
+</html>
